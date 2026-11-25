@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outbound Pipeline | GTM Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<script src="dashboard.js" defer></script>
+<header>
+  <div class="wrap">
+    <span class="disclosure">Synthetic demo data</span>
+    <h1>Outbound Pipeline</h1>
+    <p>A GTM portfolio case study for an engineering software product.</p>
+    <nav aria-label="Dashboard sections">
+      <a href="#channels">Channels</a><a href="#pipeline">CRM pipeline</a>
+      <a href="#experiments">Messaging tests</a><a href="#review">Weekly review</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section id="channels" aria-labelledby="channel-title">
+    <h2 id="channel-title">Channel performance</h2>
+    <fieldset id="channels-filter">
+      <legend>Filter channel funnel and account tracker</legend>
+      <label><input type="radio" name="channel" value="All" checked> All channels</label>
+      <label><input type="radio" name="channel" value="Call"> Cold calling</label>
+      <label><input type="radio" name="channel" value="LinkedIn"> LinkedIn</label>
+      <label><input type="radio" name="channel" value="Email"> Email</label>
+    </fieldset>
+    <div id="metrics" class="metrics" aria-live="polite"></div>
+    <div id="funnels" class="grid"></div>
+  </section>
+  <section id="pipeline" aria-labelledby="pipeline-title">
+    <h2 id="pipeline-title">CRM pipeline</h2>
+    <div id="stages" class="stage-list"></div>
+    <div class="panel">
+      <div class="toolbar">
+        <h3>Account tracker</h3>
+        <label><input id="overdue" type="checkbox"> Overdue follow-ups only</label>
+      </div>
+      <p id="tracker-count" role="status"></p>
+      <div class="table-scroll"><table>
+        <thead><tr><th scope="col">Account</th><th scope="col">Buyer role</th><th scope="col">Channel</th><th scope="col">Stage</th><th scope="col">Next action</th><th scope="col">Due</th></tr></thead>
+        <tbody id="account-rows"></tbody>
+      </table></div>
+    </div>
+  </section>
+  <section id="experiments" aria-labelledby="experiments-title">
+    <h2 id="experiments-title">Messaging tests</h2>
+    <p>Two example angles for the same audience of software engineering leaders.</p>
+    <div id="variants" class="grid"></div>
+  </section>
+  <section id="review" aria-labelledby="review-title">
+    <h2 id="review-title">Weekly GTM review</h2>
+    <div class="grid">
+      <article class="panel">
+        <h3>Market feedback</h3>
+        <ul id="feedback"></ul>
+      </article>
+      <article class="panel">
+        <h3>Qualification walkthrough</h3>
+        <p><strong>Demo Account A03</strong> has a multi-repository codebase. In the fictional discovery call, the engineering lead confirmed that reviewers struggle to assess changes across services.</p>
+        <p>Next step is to scope a pilot on a single repository. The sponsor, security requirements, and baseline review time are still to qualify.</p>
+      </article>
+    </div>
+    <p class="review-note"><strong>Decision for the next review.</strong> Keep both angles in test. Hold the buyer segment and CTA steady, allow the same reply window, then compare qualified engagement and review objections before changing targeting.</p>
+  </section>
+</main>
+</html>
