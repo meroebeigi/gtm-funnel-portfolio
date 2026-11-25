@@ -28,6 +28,17 @@ Demo Account A03 progressed from LinkedIn outreach to discovery and proposal. Th
 
 ## Power BI companion
 
+Extract [gtm-power-bi-demo.zip](gtm-power-bi-demo.zip) into the repository root, then run `python run_demo.py` to regenerate the reports and `power-bi/Outbound Pipeline.pbip`. The model embeds the synthetic snapshot and uses no machine-specific file path. Open the project in Power BI Desktop and refresh the model after regeneration. Keep the project closed while running the generator. Run `python -m unittest -v` to verify the baseline and output reproducibility. The **GTM demo** GitHub Actions workflow runs both commands and uploads the resulting project and reports.
+
+### Automation walkthrough
+
+- The four files in `demo-exports/` represent synthetic CRM snapshots and call, LinkedIn, and email exports. The pipeline validates dates, IDs, stages, channels, and outcomes. It records rejected rows and duplicate meeting observations in `generated/validation.csv`.
+- A03’s LinkedIn and email rows contain the same meeting ID. The earliest valid booking observation receives credit, with channel name and activity ID breaking ties. The LinkedIn booking wins and the email row still counts as an email attempt. The CRM snapshots separately show A03 moving from Meeting to Proposal. The next action is to confirm the pilot scope and sponsor.
+- `generated/weekly-review.md` compares the two most recent CRM snapshots. An open account is stalled if it has the same active stage in both snapshots and no touch in the preceding seven days. The overdue queue uses the snapshot date and excludes Closed and Lost.
+- The outreach page counts distinct attempted accounts in the selected channels and sums attributed meetings. Channel subtotals can overlap. The CRM page uses one row per current account and filters by its primary channel. Select **Overdue** on the CRM page to see the action queue.
+
+For a manual import, the original web dashboard snapshot and its baseline measures are below.
+
 The [synthetic account snapshot](accounts-demo.csv) uses the same records as the web dashboard. Import it as `Accounts`. Set Due and Snapshot to Date, and StageOrder, Attempted, MeetingBooked, PositiveEngagement, and Overdue to Whole number.
 
 Add these measures to the model.
